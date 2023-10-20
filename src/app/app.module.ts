@@ -10,9 +10,14 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';
+import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { Dashboard3Component } from './dashboard3/dashboard3.component';
 
 const routes: Routes = [
   { path: "admin", component: AdminComponent },
+  { path: "dashboard", component: DashboardComponent },
+  { path: "dashboard2", component: Dashboard2Component },
+  { path: "dashboard3", component: Dashboard3Component },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent }, // Tambahkan rute untuk Register
   { path: "", redirectTo: "login", pathMatch: "full" }
@@ -28,7 +33,9 @@ const routes: Routes = [
     HeaderComponent,
     SidebarComponent,
     ContentComponent,
-    FooterComponent
+    FooterComponent,
+    Dashboard2Component,
+    Dashboard3Component
   ],
   imports: [
     RouterModule.forRoot(routes),
