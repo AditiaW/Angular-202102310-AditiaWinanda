@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -12,6 +12,9 @@ import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
 import { Dashboard3Component } from './dashboard3/dashboard3.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { MahasiswaComponent } from './mahasiswa/mahasiswa.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: "admin", component: AdminComponent },
@@ -19,6 +22,7 @@ const routes: Routes = [
   { path: "dashboard2", component: Dashboard2Component },
   { path: "dashboard3", component: Dashboard3Component },
   { path: "login", component: LoginComponent },
+  { path: "mahasiswa", component: MahasiswaComponent },
   { path: "register", component: RegisterComponent }, // Tambahkan rute untuk Register
   { path: "", redirectTo: "login", pathMatch: "full" }
 ]
@@ -35,11 +39,19 @@ const routes: Routes = [
     ContentComponent,
     FooterComponent,
     Dashboard2Component,
-    Dashboard3Component
+    Dashboard3Component,
+    MahasiswaComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   exports: [RouterModule],
   providers: [],
