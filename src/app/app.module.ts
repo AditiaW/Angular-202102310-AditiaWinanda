@@ -15,15 +15,20 @@ import { Dashboard3Component } from './dashboard3/dashboard3.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MahasiswaComponent } from './mahasiswa/mahasiswa.component';
 import { HttpClientModule } from '@angular/common/http';
+import { otentikasiGuard } from './otentikasi.guard';
+import { ForexComponent } from './forex/forex.component';
+import { CuacaComponent } from './cuaca/cuaca.component';
 
 const routes: Routes = [
+  { path: "forex", component: ForexComponent, canActivate: [otentikasiGuard] },
+  { path: "cuaca", component: CuacaComponent, canActivate: [otentikasiGuard] },
   { path: "admin", component: AdminComponent },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "dashboard2", component: Dashboard2Component },
   { path: "dashboard3", component: Dashboard3Component },
   { path: "login", component: LoginComponent },
-  { path: "mahasiswa", component: MahasiswaComponent },
   { path: "register", component: RegisterComponent }, // Tambahkan rute untuk Register
+  { path: "dashboard", component: DashboardComponent, canActivate: [otentikasiGuard] },
+  { path: "dashboard2", component: Dashboard2Component, canActivate: [otentikasiGuard] },
+  { path: "mahasiswa", component: MahasiswaComponent, canActivate: [otentikasiGuard] },
   { path: "", redirectTo: "login", pathMatch: "full" }
 ]
 
@@ -40,7 +45,9 @@ const routes: Routes = [
     FooterComponent,
     Dashboard2Component,
     Dashboard3Component,
-    MahasiswaComponent
+    MahasiswaComponent,
+    ForexComponent,
+    CuacaComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

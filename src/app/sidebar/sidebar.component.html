@@ -73,6 +73,26 @@
             </a>
           </li>
           <li class="nav-item">
+            <a [routerLink]="['/forex']" routerLinkActive="router-link-active" class="nav-link" [class.active]="moduleName == 'forex'">
+              <i class="nav-icon far fa-money-bill-alt"></i>
+              <span> Forex</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/cuaca']" routerLinkActive="router-link-active" class="nav-link {{ moduleName == 'cuaca' ? 'active' : '' }}">
+              <i class="nav-icon fas fa-cloud-rain"></i>
+              <span> Cuaca</span>
+            </a>
+          </li>             
+          <li class="nav-item">
+            <a href="#" class="nav-link" (click)="signOut()">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/mahasiswa" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
