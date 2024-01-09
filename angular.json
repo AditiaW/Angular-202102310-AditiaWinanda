@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs",
+            "outputPath": "dist/Angular-202102310-AditiaWinanda",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
